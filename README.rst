@@ -1,4 +1,3 @@
-==================================================
 Ocean Observatories Initiative Cyberinfrastructure
 Integrated Observatory Network (ION)
 ioncore-python - Capability Container and Core Modules
