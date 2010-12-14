@@ -178,7 +178,7 @@ Change log:
 - Changed reply_ok and reply_err: a dict content value will not be modified
 - Fixed imports and tests throughout the code base
 - Added OTP style apps and app files as primary way to start up processes
-  in the container. See res/apps/*.app files and ion.core.pack
+  in the container. See res/apps/.app files and ion.core.pack
 
 2010-09-20:
 - Added start scripts in bin/
@@ -208,7 +208,7 @@ Change log:
 
 2010-08-03:
 - Added ant build.xml file to LCAarch root dir. Start with ant.
-  Supports ant clean, which removes all *.pyc from ion path.
+  Supports ant clean, which removes all .pyc from ion path.
 
 2010-07-23:
 - Refactored the Registry Services to inherit from a common base class. This
