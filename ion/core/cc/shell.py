@@ -16,9 +16,6 @@ from twisted.conch.insults import insults
 from twisted.conch import manhole
 from twisted.python import text
 
-import ion.util.ionlog
-log = ion.util.ionlog.getLogger(__name__)
-
 from ion.core import ionconst
 
 CTRL_A = '\x01'
@@ -356,7 +353,6 @@ class Control(object):
     pre_namespace = {}
 
     def start(self, ccService):
-        #log.info('Shell Start')
         fd = sys.__stdin__.fileno()
         fdout = sys.__stdout__.fileno()
 
@@ -389,10 +385,9 @@ class Control(object):
 
     def stop(self):
         termios.tcsetattr(self.fd, termios.TCSANOW, self.oldSettings)
-        #log.info('Shell Stop')
         # if terminal write reset doesnt work in handle QUIT, use this
         os.write(self.fd, "\r\x1bc\r")
-        log.info('Shell exited. Press Ctrl-c to stop container')
+        os.write(self.fd, 'Shell exited. Press Ctrl-c to stop container\n')
 
     def add_term_name(self, key, value):
         if self.namespace:
