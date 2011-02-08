@@ -33,7 +33,7 @@ setupdict = {
 try:
     from setuptools import setup, find_packages
     setupdict['packages'] = find_packages()
-
+    setupdict['scripts'] = ['scripts/ion-admin']
     setupdict['dependency_links'] = ['http://ooici.net/packages']
     setupdict['packages'].extend(['twisted/plugins'])
     setupdict['package_data'] = {'twisted.plugins': ['twisted/plugins/cc.py']}
