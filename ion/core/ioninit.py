@@ -14,6 +14,9 @@ import os
 from ion.core import ionconst as ic
 from ion.util.config import Config
 
+# This is annoying
+# Why do we have to import all of the modules anyways? Doing this makes
+# testing individual pieces of functionality IMPOSSIBLE!
 print "ION (Integrated Observatory Network) core packages initializing (ver. %s)" % (ic.VERSION)
 
 # ION has a minimum required python version
@@ -23,6 +26,9 @@ if not hasattr(sys, "version_info") or sys.version_info < (2,5):
 if sys.version_info > (3,0):
     raise RuntimeError("ioncore is not compatible with Python 3.0 or later.")
 del sys
+
+# The following code looking for a ION_ALTERNATE_LOGGING_CONF environment
+# variable can go away with the new ion environment directories 
 
 # Configure logging system (console, logfile, other loggers)
 # NOTE: Console logging is appended to Twisted log output prefix!!
