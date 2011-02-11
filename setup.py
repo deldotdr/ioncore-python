@@ -33,7 +33,6 @@ setupdict = {
 try:
     from setuptools import setup, find_packages
     setupdict['packages'] = find_packages()
-    #setupdict['scripts'] = ['scripts/ion-admin']
     setupdict['entry_points'] = {
                                 'console_scripts': [
                                     'ion-admin=ion.core.env.ion_admin:main',
