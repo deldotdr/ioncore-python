@@ -1,6 +1,9 @@
 
 from twisted.internet import defer
 
+from ion.core import ioninit
+CONF = ioninit.config(__name__)
+from ion.util.itv_decorator import itv
 from ion.test.iontest import IonTestCase
 from ion.util import procutils as pu
 import ion.util.ionlog
@@ -60,6 +63,74 @@ class SkipAlongDeferred(SkipAlong):
     @defer.inlineCallbacks
     def test_18(self):
         yield pu.asleep(.1)
+    @defer.inlineCallbacks
+    def test_19(self):
+        yield pu.asleep(.1)
+
+class SkipAlongItv(SkipAlong):
+
+    @itv(CONF) 
+    def test_1(self):
+        pass
+    @itv(CONF) 
+    def test_12(self):
+        pass
+    @itv(CONF) 
+    def test_13(self):
+        pass
+    @itv(CONF) 
+    def test_14(self):
+        pass
+    @itv(CONF) 
+    def test_15(self):
+        pass
+    @itv(CONF) 
+    def test_16(self):
+        pass
+    @itv(CONF) 
+    def test_17(self):
+        pass
+    @itv(CONF) 
+    def test_18(self):
+        pass
+    @itv(CONF) 
+    def test_19(self):
+        pass
+
+class SkipAlongDeferredItv(SkipAlong):
+    @itv(CONF) 
+    @defer.inlineCallbacks
+    def test_1(self):
+        yield pu.asleep(.1)
+    @itv(CONF) 
+    @defer.inlineCallbacks
+    def test_12(self):
+        yield pu.asleep(.1)
+    @itv(CONF) 
+    @defer.inlineCallbacks
+    def test_13(self):
+        yield pu.asleep(.1)
+    @itv(CONF) 
+    @defer.inlineCallbacks
+    def test_14(self):
+        yield pu.asleep(.1)
+    @itv(CONF) 
+    @defer.inlineCallbacks
+    def test_15(self):
+        yield pu.asleep(.1)
+    @itv(CONF) 
+    @defer.inlineCallbacks
+    def test_16(self):
+        yield pu.asleep(.1)
+    @itv(CONF) 
+    @defer.inlineCallbacks
+    def test_17(self):
+        yield pu.asleep(.1)
+    @itv(CONF) 
+    @defer.inlineCallbacks
+    def test_18(self):
+        yield pu.asleep(.1)
+    @itv(CONF) 
     @defer.inlineCallbacks
     def test_19(self):
         yield pu.asleep(.1)
