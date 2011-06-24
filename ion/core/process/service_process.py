@@ -52,6 +52,12 @@ class ServiceProcess(Process):
         #default_svcname = self.declare['name'] + '_' + self.declare['version']
         default_svcname = self.declare['name']
         self.svc_name = self.spawn_args.get('servicename', default_svcname)
+        persistent = self.spawn_args.get('persistent', False)
+        log.debug('Service PERSISTENT: ' + str(persistent))
+        if str(persistent) == 'True':#Cant rely on spawnargs being bool
+            consumer_config = {'auto_delete': False}
+        else:
+            consumer_config = None
         assert self.svc_name, "Service must have a declare with a valid name"
 
         # Create a receiver (inbound queue consumer) for service name
@@ -62,6 +68,7 @@ class ServiceProcess(Process):
                 group=self.receiver.group,
                 process=self, # David added this - is it a good idea?
                 handler=self.receive,
+                consumer_config=consumer_config,
                 error_handler=self.receive_error)
         self.add_receiver(self.svc_receiver)
 
