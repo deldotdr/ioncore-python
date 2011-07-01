@@ -54,7 +54,7 @@ class ServiceProcess(Process):
         self.svc_name = self.spawn_args.get('servicename', default_svcname)
         persistent = self.spawn_args.get('persistent', False)
         log.debug('Service PERSISTENT: ' + str(persistent))
-        if str(persistent) == 'True':#Cant rely on spawnargs being bool
+        if str(persistent).lower() in ('true', '1',):#Cant rely on spawnargs being bool
             consumer_config = {'auto_delete': False}
         else:
             consumer_config = None
